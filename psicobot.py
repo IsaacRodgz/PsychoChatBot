@@ -92,9 +92,9 @@ def sendButtonMessage(sender_id, message_text):
           ]
         }
       }
-
-      sendRequest(sender_id, message_data)
   }
+
+  sendRequest(sender_id, message_data)
 
 def send_message(recipient_id, message_text):
 
