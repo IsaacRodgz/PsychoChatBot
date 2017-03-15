@@ -7,6 +7,7 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
+PAT = 'EAAGLRiMjkrsBABVa39Mm78ABsMuEKIkZCqq4cvItXZBNL2MtQJTJZBNOPLbDr8rypuf9xuOT0b8eGXbUIKgXtYr4Y6GEtR59Quqr3AzbI36rTKjqZCGXuQDJsAKZAvMyGPxsx1vd7IZA4vOt6BXkpGvugh9AtUi3E1bFSe6UJO3gZDZD'
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -58,7 +59,7 @@ def send_message(recipient_id, message_text):
     log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
 
     params = {
-        "access_token": os.environ["EAAGLRiMjkrsBABVa39Mm78ABsMuEKIkZCqq4cvItXZBNL2MtQJTJZBNOPLbDr8rypuf9xuOT0b8eGXbUIKgXtYr4Y6GEtR59Quqr3AzbI36rTKjqZCGXuQDJsAKZAvMyGPxsx1vd7IZA4vOt6BXkpGvugh9AtUi3E1bFSe6UJO3gZDZD"]
+        "access_token": PAT
     }
     headers = {
         "Content-Type": "application/json"
