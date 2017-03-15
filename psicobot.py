@@ -50,7 +50,15 @@ def webhook():
                     pass
 
                 if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
-                    pass
+                  sender_id = messaging_event["sender"]["id"]
+                  message_text = messaging_event["postback"]["payload"]
+
+                  message_text = message_text.lower()
+
+                  if message_text == "yes":
+                    send_message(sender_id, "Por favor contesta las siguientes preguntas")
+                  elif message_text == "no":
+                    send_message(sender_id, "Si cambias de opinión contáctanos de nuevo :)")
 
     return "ok", 200
 
@@ -62,6 +70,30 @@ def decideMessage(sender_id, message_text):
     send_message(sender_id, "Hasta luego!")
   else:
     send_message(sender_id, "Visto")
+
+def sendButtonMessage(sender_id, message_text):
+  message_data = {
+    "attachment":{
+        "type":"template",
+        "payload":{
+          "template_type":"button",
+          "text":"¿Te interesaría recibir atención de un psicólogo?",
+          "buttons":[
+            {
+              "type":"postback",
+              "title":"Yes",
+              "payload":"yes"
+            },
+            {
+              "type":"postback",
+              "title":"No",
+              "payload":"no"
+            }
+          ]
+        }
+      }
+  }
+
 def send_message(recipient_id, message_text):
 
     log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
