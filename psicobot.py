@@ -29,10 +29,6 @@ def webhook():
     data = request.get_json()
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
 
-    print("----------------------------------")
-    print(data)
-    print("----------------------------------")
-
     if data["object"] == "page":
 
         for entry in data["entry"]:
@@ -44,7 +40,8 @@ def webhook():
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
 
-                    send_message(sender_id, "got it, thanks!")
+                    decideMessage(sender_id, message_text)
+                    #send_message(sender_id, "got it, thanks!")
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
@@ -57,7 +54,14 @@ def webhook():
 
     return "ok", 200
 
-
+def decideMessage(sender_id, message_text):
+  text = message_text.lower()
+  if "hola" in text:
+    send_message(sender_id, "Hola!")
+  elif "adios" in text:
+    send_message(sender_id, "Hasta luego!")
+  else:
+    send_message(sender_id, "Visto")
 def send_message(recipient_id, message_text):
 
     log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
