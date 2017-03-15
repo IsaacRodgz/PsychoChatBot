@@ -77,7 +77,7 @@ def sendButtonMessage(sender_id, message_text):
         "type":"template",
         "payload":{
           "template_type":"button",
-          "text":"¿Te interesaria recibir atencion de un psicologo?",
+          "text":"Te interesaria recibir atencion de un psicologo?",
           "buttons":[
             {
               "type":"postback",
