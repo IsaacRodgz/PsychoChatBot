@@ -65,33 +65,34 @@ def webhook():
 def decideMessage(sender_id, message_text):
   text = message_text.lower()
   if "hola" in text:
-    sendButtonMessage(sender_id, text)
+    sendButtonMessage(sender_id)
   elif "adios" in text:
     send_message(sender_id, "Hasta luego!")
   else:
     send_message(sender_id, "Visto")
 
-def sendButtonMessage(sender_id, message_text):
-  message_data = {
+def sendButtonMessage(sender_id):
+  message_data = 
+  {
     "attachment":{
-        "type":"template",
-        "payload":{
-          "template_type":"button",
-          "text":"Te interesaria recibir atencion de un psicologo?",
-          "buttons":[
-            {
-              "type":"postback",
-              "title":"Si",
-              "payload":"si"
-            },
-            {
-              "type":"postback",
-              "title":"No",
-              "payload":"no"
-            }
-          ]
-        }
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"What do you want to do next?",
+        "buttons":[
+          {
+            "type":"web_url",
+            "url":"https://petersapparel.parseapp.com",
+            "title":"Show Website"
+          },
+          {
+            "type":"postback",
+            "title":"Start Chatting",
+            "payload":"USER_DEFINED_PAYLOAD"
+          }
+        ]
       }
+    }
   }
 
   sendRequest(sender_id, message_data)
@@ -119,6 +120,7 @@ def sendRequest(recipient_id, message_data):
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
     if r.status_code != 200:
+        log("Eror :c")
         log(r.status_code)
         log(r.text)
 
