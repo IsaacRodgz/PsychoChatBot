@@ -100,9 +100,9 @@ def send_message(recipient_id, message_text):
 
     log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
 
-    sendRequest(sender_id, message_text)
+    sendRequest(recipient_id, message_text)
 
-def sendRequest(sender_id, message_data):
+def sendRequest(recipient_id, message_data):
     params = {
         "access_token": PAT
     }
