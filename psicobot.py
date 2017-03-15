@@ -65,7 +65,7 @@ def webhook():
 def decideMessage(sender_id, message_text):
   text = message_text.lower()
   if "hola" in text:
-    send_message(sender_id, "Hola!")
+    sendButtonMessage(sender_id, text)
   elif "adios" in text:
     send_message(sender_id, "Hasta luego!")
   else:
