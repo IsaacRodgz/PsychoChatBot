@@ -77,17 +77,17 @@ def sendButtonMessage(sender_id):
       "type":"template",
       "payload":{
         "template_type":"button",
-        "text":"What do you want to do next?",
+        "text":"Te gustaria recibir atencion de un psicologo?",
         "buttons":[
           {
-            "type":"web_url",
-            "url":"https://petersapparel.parseapp.com",
-            "title":"Show Website"
+            "type":"postback",
+            "title":"Si",
+            "payload":"si"
           },
           {
             "type":"postback",
-            "title":"Start Chatting",
-            "payload":"USER_DEFINED_PAYLOAD"
+            "title":"No",
+            "payload":"no"
           }
         ]
       }
