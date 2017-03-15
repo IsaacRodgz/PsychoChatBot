@@ -92,12 +92,17 @@ def sendButtonMessage(sender_id, message_text):
           ]
         }
       }
+
+      sendRequest(sender_id, message_data)
   }
 
 def send_message(recipient_id, message_text):
 
     log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
 
+    sendRequest(sender_id, message_text)
+
+def sendRequest(sender_id, message_data):
     params = {
         "access_token": PAT
     }
@@ -109,14 +114,13 @@ def send_message(recipient_id, message_text):
             "id": recipient_id
         },
         "message": {
-            "text": message_text
+            "text": message_data
         }
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
     if r.status_code != 200:
         log(r.status_code)
         log(r.text)
-
 
 def log(message):  # simple wrapper for logging to stdout on heroku
     print str(message)
