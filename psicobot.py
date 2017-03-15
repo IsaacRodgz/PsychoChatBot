@@ -25,9 +25,7 @@ def handle_messages():
   print(payload)
   for sender, message in messaging_events(payload):
     print("Incoming from %s: %s" % (sender, message))
-
     send_message(PAT, sender, message)
-
   return "ok"
 
 def messaging_events(payload):
@@ -43,7 +41,7 @@ def messaging_events(payload):
       yield event["sender"]["id"], "I can't echo this"
 
 
-def send_message(token, recipient, text):
+#def send_message(token, recipient, text):
   """Send the message text to recipient with id recipient.
   """
 
