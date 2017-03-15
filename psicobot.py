@@ -72,8 +72,7 @@ def decideMessage(sender_id, message_text):
     send_message(sender_id, "Visto")
 
 def sendButtonMessage(sender_id):
-  message_data = 
-  {
+  message_data = {
     "attachment":{
       "type":"template",
       "payload":{
