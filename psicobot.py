@@ -100,7 +100,7 @@ def send_message(recipient_id, message_text):
 
     log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
 
-    sendRequest(recipient_id, message_text)
+    sendRequest(recipient_id, {"text":message_text})
 
 def sendRequest(recipient_id, message_data):
     params = {
@@ -114,7 +114,7 @@ def sendRequest(recipient_id, message_data):
             "id": recipient_id
         },
         "message": {
-            "text": message_data
+            message_data
         }
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
