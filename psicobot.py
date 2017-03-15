@@ -55,10 +55,10 @@ def webhook():
 
                   message_text = message_text.lower()
 
-                  if message_text == "yes":
+                  if message_text == "si":
                     send_message(sender_id, "Por favor contesta las siguientes preguntas")
                   elif message_text == "no":
-                    send_message(sender_id, "Si cambias de opinión contáctanos de nuevo :)")
+                    send_message(sender_id, "Si cambias de opinion contactanos de nuevo :)")
 
     return "ok", 200
 
@@ -77,12 +77,12 @@ def sendButtonMessage(sender_id, message_text):
         "type":"template",
         "payload":{
           "template_type":"button",
-          "text":"¿Te interesaría recibir atención de un psicólogo?",
+          "text":"¿Te interesaria recibir atencion de un psicologo?",
           "buttons":[
             {
               "type":"postback",
-              "title":"Yes",
-              "payload":"yes"
+              "title":"Si",
+              "payload":"si"
             },
             {
               "type":"postback",
