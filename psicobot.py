@@ -14,9 +14,9 @@ def verify():
     # when the endpoint is registered as a webhook, it must echo back
     # the 'hub.challenge' value it receives in the query arguments
     if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.challenge"):
-        if not request.args.get("hub.verify_token") == os.environ["my_voice_is_my_password_verify_me"]:
+        if not request.args.get('hub.verify_token', '') == 'my_voice_is_my_password_verify_me':
             return "Verification token mismatch", 403
-        return request.args["hub.challenge"], 200
+        return request.args.get('hub.challenge', '')
 
     return "Hello world", 200
 
@@ -25,6 +25,9 @@ def verify():
 def webhook():
 
     # endpoint for processing incoming messaging events
+    print("----------------------------------")
+    print(data)
+    print("----------------------------------")
 
     data = request.get_json()
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
