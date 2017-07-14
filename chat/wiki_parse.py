@@ -72,7 +72,16 @@ def extract_wiki(size):
 	not_words = {'ref', 'http', 'url', 'www', 'html', 'p', 'align', 'left', 'dq', 'ii', 'pp', 'hl', 'br', 'sp',
 				 'aspx','https', 'com', 'small', 'span', 'class', 'nbsp', 'org', 'fechaacceso', 'fechaarchivo',
 				 'pg', 'htm', 'gc', 'pmid', 'doi', 'eurostat', 'esd', 'php', 'isbn', 'gov', 'co', 'harvnp', 'books',
-				 'urlarchivo', 'az'}
+				 'urlarchivo', 'az', 'º', 'xix', 'studies', 'ee', 'ua', 'saudi', 'von', 'greece', 'classora',
+				 'gr', 'factbook', 'shtml', 'lang', 'hr', 'efe', 'gould', 'allmusic', 'iii', 'nº', 'onepage',
+				 'stm', 'du', 'elpais', 'ue', 'files', 'cfm', 'facts', 'au', 'ec', 'ppa', 'xvii', 'nih', 'der',
+				 'ved', 'iv', 'lpg', 'infobae', 'oecd', 'reports', 'des', 'com_content', 'bhutan', 'svg', 'itemid',
+				 'nations', 'elmundo', 'wp', 'll', 'nytimes', 'ru', 'states', 'cr', 'fr', 'tls', 'pdfs', 'jsp',
+				 'reuters', 'ª', 'boe', 'tes', 'ch', 'títulotrad', 'undp', 'bgcolor', 'drae', 'pt', 'eng', 'xvi',
+				 'edu', 'km²', 'cl', 'et', 'iaaf', 'psoe', 'pr', 'harvsp', 'issn', 'cgi', 'ft', 'pages', 'int', 'ac',
+				 'pe', 'xiii', 'nsf', 'mw', 'vii', 'harvnb', 'ph', 'ei', 'xviii', 'archiveurl', 'elcomercio', 'rae',
+				 'ocde', 'anos', 'tolkien', 'añoacceso', 'abc', 'il', 'pubs', 'ix', 'sci', 'scielo', 'results',
+				 'fao', 'gt', 'emol', 'nz', 'oclc', 'viii', ''}
 
 	# Delete english words
 	english_vocab = set(w.lower() for w in words.words())
@@ -121,6 +130,8 @@ def extract_wiki(size):
 							# print(wordlist)
 							# print("\n\n")
 							#input()
+
+							print(count)
 
 							# Add wordlist to corpus
 							sentences += wordlist

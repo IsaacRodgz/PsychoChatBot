@@ -71,7 +71,7 @@ sentences = []  # Initialize an empty list of sentences
 
 print("\nParsing wiki")
 # Extract 1000 sentences
-sentences = wiki_parse.extract_wiki(1000)
+sentences = wiki_parse.extract_wiki(5000)
 print("\nWiki parsed")
 input()
 
@@ -104,5 +104,11 @@ model.init_sims(replace=True)
 model_name = "300features_40minwords_10context"
 model.save(model_name)
 
+from gensim import models
+model = models.Word2Vec.load(model_name)
+
 for word in model.wv.vocab:
 	print(word)
+
+model.wv.most_similar(positive=['woman', 'king'], negative=['man'])
+model.wv.most_similar_cosmul(positive=['woman', 'king'], negative=['man'])
