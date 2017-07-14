@@ -81,7 +81,10 @@ def extract_wiki(size):
 				 'edu', 'km²', 'cl', 'et', 'iaaf', 'psoe', 'pr', 'harvsp', 'issn', 'cgi', 'ft', 'pages', 'int', 'ac',
 				 'pe', 'xiii', 'nsf', 'mw', 'vii', 'harvnb', 'ph', 'ei', 'xviii', 'archiveurl', 'elcomercio', 'rae',
 				 'ocde', 'anos', 'tolkien', 'añoacceso', 'abc', 'il', 'pubs', 'ix', 'sci', 'scielo', 'results',
-				 'fao', 'gt', 'emol', 'nz', 'oclc', 'viii', ''}
+				 'fao', 'gt', 'emol', 'nz', 'oclc', 'viii', 'hn', 'fmi', 'jcyl', 'jhtml', 'cruyff', 'gdp', 'hepburn',
+				 'bl', 'iu', 'pnv', 'pubmed', 'rtve', 'tufts', 'uu', 'nlm', 'xiv', 'pmc', 'iffhs', 'rimski', 'wikt',
+				 'govt', 'oi', 'pl', 'rp', 'women', 'sciences', 'ct', 'jp', 'nowiki', 'jaws', 'dw', 'cities', 'xii',
+				 'mg'}
 
 	# Delete english words
 	english_vocab = set(w.lower() for w in words.words())
