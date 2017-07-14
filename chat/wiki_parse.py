@@ -1,5 +1,5 @@
 # Import various modules for string cleaning
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
 import sys
 from bs4 import BeautifulSoup
 import re
@@ -14,7 +14,7 @@ def text_to_wordlist( text, remove_stopwords=False ):
 
     # 1. Remove HTML and convert words to lower case
 	text_ = BeautifulSoup(text, "html.parser").get_text().lower()
-  
+
     # 2. Filter words including words with accents and special symbols
 	try:
 		#text_ = re.search(re.compile('((\w+\s)|(\w+\W+\w+\s))+', re.UNICODE), u"{0}".format(text_)).group(0)
@@ -35,7 +35,7 @@ def text_to_wordlist( text, remove_stopwords=False ):
 
 # Define a function to split a review into parsed sentences
 def text_to_sentences( text, tokenizer, remove_stopwords=False ):
-    # Function to split a review into parsed sentences. Returns a 
+    # Function to split a review into parsed sentences. Returns a
     # list of sentences, where each sentence is a list of words
 
     # 0. Replace accents with equivalent ASCII
@@ -81,7 +81,10 @@ def extract_wiki(size):
 				 'edu', 'km²', 'cl', 'et', 'iaaf', 'psoe', 'pr', 'harvsp', 'issn', 'cgi', 'ft', 'pages', 'int', 'ac',
 				 'pe', 'xiii', 'nsf', 'mw', 'vii', 'harvnb', 'ph', 'ei', 'xviii', 'archiveurl', 'elcomercio', 'rae',
 				 'ocde', 'anos', 'tolkien', 'añoacceso', 'abc', 'il', 'pubs', 'ix', 'sci', 'scielo', 'results',
-				 'fao', 'gt', 'emol', 'nz', 'oclc', 'viii', ''}
+				 'fao', 'gt', 'emol', 'nz', 'oclc', 'viii', 'hn', 'fmi', 'jcyl', 'jhtml', 'cruyff', 'gdp', 'hepburn',
+				 'bl', 'iu', 'pnv', 'pubmed', 'rtve', 'tufts', 'uu', 'nlm', 'xiv', 'pmc', 'iffhs', 'rimski', 'wikt',
+				 'govt', 'oi', 'pl', 'rp', 'women', 'sciences', 'ct', 'jp', 'nowiki', 'jaws', 'dw', 'cities', 'xii',
+				 'mg'}
 
 	# Delete english words
 	english_vocab = set(w.lower() for w in words.words())
@@ -91,7 +94,7 @@ def extract_wiki(size):
 
 	# Open spanish wikipedia file
 	print("\n\n")
-	with open('C:/Users/irb/Downloads/eswiki-latest-pages-articles/eswiki-latest-pages-articles.xml', 'r', encoding='utf-8') as file:
+	with open('/home/isaac/Downloads/eswiki-latest-pages-articles.xml', 'r', encoding='utf-8') as file:
 		# For each sentence in the file
 		for sentence in file:
 			if len(sentence) > 1:
@@ -110,7 +113,7 @@ def extract_wiki(size):
 						if (word in not_words) or (re.search("[0-9]", word)) or (word in english_vocab):
 							not_words_index.append((i,j))
 
-				# Delete words with the help of not_words_index 
+				# Delete words with the help of not_words_index
 				if len(not_words_index) > 0:
 					for i,j in sorted(not_words_index, reverse=True):
 						del wordlist[i][j]
@@ -142,7 +145,7 @@ def extract_wiki(size):
 							# If size sentences are extracted form file, finish for loop
 							if count > size:
 								break
-						
+
 						except UnicodeEncodeError:
 							pass
 							#print('~~~~~~~~~~raw~~~~~~~~~~')
